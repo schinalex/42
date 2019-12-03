@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/schinalex/42/issues"
   },
-  "homepage": "https://github.com/schinalex/42#readme"
+  "homepage": "https://github.com/schinalex/42#readme",
+  "dependencies": {
+    "koa": "^2.11.0"
+  }
 }
