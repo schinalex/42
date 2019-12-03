@@ -1,0 +1,19 @@
+{
+  "name": "42",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schinalex/42.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schinalex/42/issues"
+  },
+  "homepage": "https://github.com/schinalex/42#readme"
+}
