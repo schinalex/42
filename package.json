@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "deploy": "node index.js > stdout.txt 2> stderr.txt &",
+    "deploy": "npm ci && node index.js > stdout.txt 2> stderr.txt &",
     "kill": "pkill node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
