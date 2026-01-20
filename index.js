@@ -8,7 +8,35 @@ app.use(async (ctx, next) => {
 })
 
 app.use(ctx => {
-  ctx.body = 'Hello World'
+  if (ctx.method !== 'GET') {
+    ctx.status = 405
+    ctx.body = 'Method Not Allowed'
+    return
+  }
+
+  if (ctx.path === '/') {
+    ctx.body = 'Hello World'
+    return
+  }
+
+  if (ctx.path === '/hello') {
+    ctx.body = 'Hello from /hello'
+    return
+  }
+
+  if (ctx.path === '/time') {
+    ctx.body = new Date().toISOString()
+    return
+  }
+
+  if (ctx.path === '/json') {
+    ctx.type = 'application/json'
+    ctx.body = { ok: true, path: ctx.path }
+    return
+  }
+
+  ctx.status = 404
+  ctx.body = `Not Found: ${ctx.path}`
 })
 
 app.listen(3000)

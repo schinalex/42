@@ -7,14 +7,24 @@
   </head>
   <body>
     <h1>Koa Response</h1>
+    <label for="pathInput">Path</label>
+    <input id="pathInput" type="text" value="/" />
+    <button id="sendBtn" type="button">Send</button>
     <p id="output">Loading...</p>
 
     <script>
+      function normalizePath(value) {
+        if (!value) return '/'
+        return value.startsWith('/') ? value : `/${value}`
+      }
+
       async function loadMessage() {
         const output = document.getElementById('output')
+        const pathInput = document.getElementById('pathInput')
+        const path = normalizePath(pathInput.value.trim())
 
         try {
-          const response = await fetch('http://localhost:3000/')
+          const response = await fetch(`http://localhost:3000${path}`)
           if (!response.ok) {
             throw new Error(`Request failed: ${response.status}`)
           }
@@ -24,6 +34,13 @@
           output.textContent = `Error: ${error.message}`
         }
       }
+
+      document.getElementById('sendBtn').addEventListener('click', loadMessage)
+      document.getElementById('pathInput').addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          loadMessage()
+        }
+      })
 
       loadMessage()
     </script>
